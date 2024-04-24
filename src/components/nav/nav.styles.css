@@ -1,0 +1,23 @@
+.nav-component {
+	padding: 20px 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #000000;
+}
+
+.nav-header {
+	font-weight: 400;
+	font-size: 25px;
+	color: white;
+	font-style: italic;
+}
+
+.nav-component input {
+	border: none;
+	outline: none;
+	padding: 10px 10px 10px 45px;
+	border-radius: 30px;
+	color: #505157;
+	width: 300px;
+}
