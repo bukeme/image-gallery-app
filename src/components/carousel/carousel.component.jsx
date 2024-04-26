@@ -1,5 +1,6 @@
 import {useContext} from 'react';
 import AliceCarousel from 'react-alice-carousel';
+import CarouselItemComponent from '../carousel-item/carousel-item.component';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import {CarouselContext} from '../../contexts/carousel/carousel.context';
 import './carousel.styles.css';
@@ -7,35 +8,34 @@ import './carousel.styles.css';
 
 
 const CarouselComponent = () => {
-	const {showCarousel, toggleShowCarousel} = useContext(CarouselContext);
-	const handleDragStart = (event) => event.preventDefault();
-	const items = [
-		<img className='carousel-item' src='https://mksdmcdn-9b59.kxcdn.com/pinhole/wp-content/uploads/2017/08/pinhole_adventure_09-276x184.jpg' alt='carousel item' onDragStart={handleDragStart} role='presentation' />,
-		<img className='carousel-item' src='https://mksdmcdn-9b59.kxcdn.com/pinhole/wp-content/uploads/2017/07/pinhole_food_13-378x567.jpg' alt='carousel item' onDragStart={handleDragStart} role='presentation' />,
-		<img className='carousel-item' src='https://mksdmcdn-9b59.kxcdn.com/pinhole/wp-content/uploads/2017/07/pinhole_interior_14-276x226.jpg' alt='carousel item' onDragStart={handleDragStart} role='presentation' />,
-		<img className='carousel-item' src='https://mksdmcdn-9b59.kxcdn.com/pinhole/wp-content/uploads/2017/08/pinhole_kids_01-276x184.jpg' alt='carousel item' onDragStart={handleDragStart} role='presentation' />,
-		<img className='carousel-item' src='https://mksdmcdn-9b59.kxcdn.com/pinhole/wp-content/uploads/2017/08/pinhole_portrait_12-276x414.jpg' alt='carousel item' onDragStart={handleDragStart} role='presentation' />,
-		<img className='carousel-item' src='https://mksdmcdn-9b59.kxcdn.com/pinhole/wp-content/uploads/2017/07/pinhole_food_18-276x184.jpg' alt='carousel item' onDragStart={handleDragStart} role='presentation' />,
-		<img className='carousel-item' src='https://mksdmcdn-9b59.kxcdn.com/pinhole/wp-content/uploads/2017/08/pinhole_adventure_27-276x413.jpg' alt='carousel item' onDragStart={handleDragStart} role='presentation' />,
-		<img className='carousel-item' src='https://mksdmcdn-9b59.kxcdn.com/pinhole/wp-content/uploads/2017/07/pinhole_wedding_11-276x414.jpg' alt='carousel item' onDragStart={handleDragStart} role='presentation' />,
-	];
+	const {showCarousel, toggleShowCarousel, activeIndex, carousel} = useContext(CarouselContext);
+	const renderSlideInfo = ({item, itemsCount}) => (
+		<span className='slide-info'>{item} / {itemsCount}</span>
+	);
+	const items = carousel.imgs.map(({alt, src}) => (
+		<CarouselItemComponent alt={alt} src={src} />
+	));
 	return (
 		<>
 			{
 				showCarousel ?
-				<div class='carousel-component'>
+				<div className='carousel-component'>
+					<div>
+						<AliceCarousel
+							activeIndex={activeIndex}
+							mouseTracking
+							items={items}
+							autoPlay={true}
+							infinite={true}
+							autoPlayInterval={5000}
+							disableSlideInfo={false}
+							renderSlideInfo={renderSlideInfo} />
+					</div>
 					<span
 						className='carousel-component__close-icon'
 						onClick={toggleShowCarousel}>
 						&times;
 					</span>
-					<AliceCarousel
-						mouseTracking
-						items={items}
-						autoPlay={true}
-						autoPlayControls={true}
-						infinite={true}
-						autoPlayInterval={5000} />
 				</div> :
 				null
 			}

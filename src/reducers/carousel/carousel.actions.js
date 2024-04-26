@@ -1,6 +1,9 @@
-import {carouselActionTypes} from './carousel.types.js';
+import {carouselActionTypes} from './carousel.types';
 
-export const searchImage = query => ({
+export const searchImage = (query, imgs) => ({
 	type: carouselActionTypes.SEARCH_IMAGE,
-	payload: query
+	payload: {
+		query: query,
+		imgs: imgs
+	}
 });

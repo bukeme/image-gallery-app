@@ -1,14 +1,20 @@
 import {carouselActionTypes} from './carousel.types.js';
-import {IMAGES} from './carousel.data';
 
 export const INITIAL_STATE = {
 	isLoading: true,
-	imgs: IMAGES
+	query: '',
+	imgs: null
 }
 
 
-const carouselReducer = ({state, action}) => {
+const carouselReducer = (state, action) => {
 	switch (action.type) {
+		case carouselActionTypes.SEARCH_IMAGE:
+			return {
+				isLoading: false,
+				query: action.payload.query,
+				imgs: action.payload.imgs,
+			}
 		default:
 			return state;
 	}
