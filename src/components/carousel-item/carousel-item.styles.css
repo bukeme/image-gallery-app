@@ -8,3 +8,9 @@
 .carousel-item-component img {
 	max-width: 100%;
 }
+
+@media screen and (max-width:576px) {
+	.carousel-item-component {
+		height: calc(100vh - 200px);
+	}
+}
