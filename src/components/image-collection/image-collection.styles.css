@@ -42,3 +42,23 @@
 .image-collection__image-container:hover .image-collection__image-container--overlay {
 	opacity: 1;
 }
+
+
+@media screen and (max-width: 992px) {
+	.image-collection__gallery-container {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.image-collection__gallery-container {
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 10px;
+	}
+}
+
+@media screen and (max-width:576px) {
+	.image-collection {
+		padding: 0 10px;
+	}
+}

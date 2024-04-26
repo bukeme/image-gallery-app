@@ -16,8 +16,24 @@
 .nav-component input {
 	border: none;
 	outline: none;
-	padding: 10px 10px 10px 45px;
+	padding: 10px 10px 10px 20px;
 	border-radius: 30px;
 	color: #505157;
 	width: 300px;
+	min-width: 0px;
+	margin-left: 10px;
+}
+
+@media screen and (max-width:576px) {
+	.nav-component {
+		padding: 10px;
+	}
+
+	.nav-header {
+		font-size: 20px;
+	}
+
+	.nav-component input {
+		width: 200px;
+	}
 }

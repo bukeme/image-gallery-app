@@ -1,5 +1,6 @@
 import {useContext} from 'react';
 import {CarouselContext} from '../../contexts/carousel/carousel.context';
+import CarouselComponent from '../carousel/carousel.component';
 import './image-collection.styles.css';
 
 
@@ -38,6 +39,7 @@ const ImageCollectionComponent = () => {
 							</div>
 						))}
 					</div>
+					<CarouselComponent />
 				</div>
 			}
 		</>
